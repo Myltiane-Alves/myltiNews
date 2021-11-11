@@ -3,7 +3,7 @@ import { stripe } from '../../services/stripe';
 import { mocked } from 'ts-jest/utils';
 import Home, { getStaticProps } from '../../pages';
 
-jest.mock('net/router')
+jest.mock('next/router')
 jest.mock('next-auth/client', () => {
     return {
         useSession: () => [null, false]

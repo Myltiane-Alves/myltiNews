@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { mocked } from 'ts-jest/utils'
 import { signIn, useSession } from 'next-auth/client';
-import { SubscribeButton } from '.';
 import { useRouter } from 'next/router';
+import { SubscribeButton } from '.';
 
 jest.mock('next-atuh/client');
 jest.mock('next/router');
@@ -26,14 +26,14 @@ describe('SubscribeButton component', () => {
         
         render(<SubscribeButton />)
 
-        const subscribeButton = screen.getByAltText('Subscribe now');
+        const subscribeButton = screen.getByText('Subscribe now');
 
         fireEvent.click(subscribeButton)
 
         expect(signInMocked).toHaveBeenCalled()
     })
 
-    it('redirects tp posts when already has a subscription', () => {
+    it('redirects user to posts when user already has a subscription', () => {
         const useRouterMocked = mocked(useRouter)
         const useSessionMocked = mocked(useSession)
         const pushMock = jest.fn()
